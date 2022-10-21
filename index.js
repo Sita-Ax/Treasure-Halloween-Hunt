@@ -9,12 +9,7 @@ function init() {
 
 function initGameUI() {
   initChests();
-  //checking bord
   initScoreBoard();
-  //ref to get new chest
-  initRefreshButton();
-  //opens chest
-  initChestEventListeners();
 }
 
 function initChests() {
@@ -68,7 +63,8 @@ function initChestEventListeners() {
 
 function chestClicked(e) {
   if (randomChest == e.target.id) {
-    e.target.src = "images/crystal-scull.png";
+    getImageFromPexels(e);
+    // e.target.src = "images/crystal-scull.png";
     scoreUpdate(scored += 5);
   } else {
     e.target.src = "images/chest-open.png";
@@ -76,17 +72,22 @@ function chestClicked(e) {
   removeChestEvents();
 }
 
-function getImageFromPexels() {
+function getImageFromPexels(e) {
+  let url = 'https://api.pexels.com/v1/search?query=halloween+query&per_page1&page=1%22';
+  const request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.setRequestHeader('Authorization', '563492ad6f91700001000001a3da77e259d5476ba28118757c5cf8d6');
+  request.send();
+  request.addEventListener('load', function(){
+    let imgPexels = JSON.parse(this.response);
+    e.target.src = imgPexels.photos[4].src.small;
+  })
   // make a request towards pexels API and get 1 Diamond image
 }
-
-// function refresh() {
-//   let refreshChest = document.getElementById("refresh-button");
-//   refreshChest.init();
-//   console.log(refreshChest + "ref");
-// }
 function removeChestEvents() {
-  console.log("rem");
+   chestOne.removeEventListener("click", chestClicked);
+  chestTwo.removeEventListener("click", chestClicked);
+  chestThree.removeEventListener("click", chestClicked);
 }
 
 document.addEventListener("DOMContentLoaded", init);
