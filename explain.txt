@@ -1,0 +1,10 @@
+Do the global variable that needs, and create the img global so it´s readable.
+
+Make the function that initiates the whole game application the init and that calls the game UI.
+
+Inside initGameUI is the setup, first the initChests make the boxes that contains the chest.
+It´s needs an id so it can be inside the if state in chestClicked to choose chests. 
+The refresh button will calls from this and also the eventlistner so if the wrong chest is clicked and
+Try Again! is clicked it will give the new random chests.
+
+When the right chest is clicked it´s gives 5points every time inside the scoreboard inside a h3 tag.
