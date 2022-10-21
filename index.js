@@ -52,7 +52,6 @@ function initRefreshButton() {
   randomChest = Math.floor(Math.random() * 3) + 1;
   let refreshButton = document.getElementById("refresh-button");
   refreshButton.addEventListener("click", initChests);
-  console.log(" initRefreshButton " + randomChest);
 }
 
 function initChestEventListeners() {
@@ -82,10 +81,10 @@ function getImageFromPexels(e) {
     let imgPexels = JSON.parse(this.response);
     e.target.src = imgPexels.photos[4].src.small;
   })
-  // make a request towards pexels API and get 1 Diamond image
+
 }
 function removeChestEvents() {
-   chestOne.removeEventListener("click", chestClicked);
+  chestOne.removeEventListener("click", chestClicked);
   chestTwo.removeEventListener("click", chestClicked);
   chestThree.removeEventListener("click", chestClicked);
 }
